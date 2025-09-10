@@ -1,0 +1,229 @@
+/* Font Imports */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+body {
+  /* Memperbaiki masalah animasi yang terhenti saat loading */
+  animation-play-state: running !important;
+}
+
+body:not(.loaded) {
+  overflow: hidden;
+}
+
+/* Custom Utilities & Components */
+.font-orbitron {
+  font-family: "Orbitron", monospace;
+}
+
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+
+.text-neon-blue {
+  color: #0d6efd;
+}
+
+.bg-neon-blue {
+  background-color: #0d6efd;
+}
+
+.border-neon-blue {
+  border-color: #0d6efd;
+}
+
+.glow-blue {
+  text-shadow: 0 0 10px #0d6efd, 0 0 20px #0d6efd, 0 0 30px #0d6efd;
+}
+
+.box-glow-blue {
+  box-shadow: 0 0 20px rgba(13, 110, 253, 0.3);
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+.slide-up {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+.slide-up.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(13, 110, 253, 0.5);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.carousel-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(13, 110, 253, 0.6);
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+}
+
+.cursor-trail {
+  transition: all 0.1s ease;
+}
+
+/* Loading state */
+body:not(.loaded) * {
+  animation-play-state: paused !important;
+}
+
+/* Enhanced hover effects */
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background: #0d6efd;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Enhanced service cards */
+.service-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(13, 110, 253, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+/* Animations - Akhir */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+.particle {
+  position: absolute;
+  background: #0d6efd;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: particle-float 8s infinite linear;
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px);
+    opacity: 0;
+  }
+}
+
+.typing::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.testimonial-track {
+  animation: testimonial-scroll 20s linear infinite;
+}
+
+.testimonial-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes testimonial-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
